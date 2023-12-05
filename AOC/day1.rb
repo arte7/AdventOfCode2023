@@ -8,7 +8,6 @@ numbers = []
 file.each_line do |line|
   ary = []
   nums = []
-  # puts line
   line.each_char { |c| ary << c }
 
   num_ary = ary.select {|v| v =~ /[1-9]/ }

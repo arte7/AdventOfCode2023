@@ -87,13 +87,14 @@ puts Benchmark.measure {
       numbers <<  range.scan(NUMS).join.to_i
     end
 
+    # take north once
     if !step_up.match(NUMS).nil? && step_up_left.match(NUMS).nil?
       if !matrix[r-1][c+2].match(NUMS).nil? && !matrix[r-1][c+1].match(NUMS).nil?
         range = matrix[r-1][c..c+2]
-      elsif matrix[r-1][c+2].match(NUMS).nil?
-        range = matrix[r-1][c..c+1]
-      elsif matrix[r-1][c+1].match(NUMS).nil?
+      elsif matrix[r-1][c+1].match(NUMS).nil? && matrix[r-1][c-1].match(NUMS).nil?
         range = matrix[r-1][c]
+      elsif matrix[r-1][c+2].match(NUMS).nil? && !matrix[r-1][c+1].match(NUMS).nil?
+        range = matrix[r-1][c..c+1]
       end
       numbers <<  range.scan(NUMS).join.to_i
     end
@@ -101,15 +102,12 @@ puts Benchmark.measure {
     if !step_up.match(NUMS).nil? && step_up_right.match(NUMS).nil?
       if !matrix[r-1][c-2].match(NUMS).nil? && !matrix[r-1][c-1].match(NUMS).nil?
         range = matrix[r-1][c-2..c]
-      elsif matrix[r-1][c-2].match(NUMS).nil?
+      elsif matrix[r-1][c-2].match(NUMS).nil? && ! matrix[r-1][c-1].match(NUMS).nil?
         range = matrix[r-1][c-1..c]
-      elsif matrix[r-1][c-1].match(NUMS).nil?
-        range = matrix[r-1][c]
       end
       numbers <<  range.scan(NUMS).join.to_i
     end
 
-    # prototype
     if !step_left.match(NUMS).nil?
       if !matrix[r][c-3].match(NUMS).nil? && !matrix[r][c-2].match(NUMS).nil?
         range = matrix[r][c-3...c]
@@ -159,13 +157,14 @@ puts Benchmark.measure {
       numbers <<  range.scan(NUMS).join.to_i
     end
 
+    # take south once
     if !step_down.match(NUMS).nil? && step_down_left.match(NUMS).nil?
       if !matrix[r+1][c+2].match(NUMS).nil? && !matrix[r+1][c+1].match(NUMS).nil?
         range = matrix[r+1][c..c+2]
-      elsif matrix[r+1][c+2].match(NUMS).nil?
-        range = matrix[r+1][c..c+1]
-      elsif matrix[r+1][c+1].match(NUMS).nil?
+      elsif matrix[r+1][c+1].match(NUMS).nil? && matrix[r+1][c-1].match(NUMS).nil?
         range = matrix[r+1][c]
+      elsif matrix[r+1][c+2].match(NUMS).nil? && !matrix[r+1][c+1].match(NUMS).nil?
+        range = matrix[r+1][c..c+1]
       end
       numbers <<  range.scan(NUMS).join.to_i
     end
@@ -173,10 +172,8 @@ puts Benchmark.measure {
     if !step_down.match(NUMS).nil? && step_down_right.match(NUMS).nil?
       if !matrix[r+1][c-2].match(NUMS).nil? && !matrix[r+1][c-1].match(NUMS).nil?
         range = matrix[r+1][c-2..c]
-      elsif matrix[r+1][c-2].match(NUMS).nil?
+      elsif matrix[r+1][c-2].match(NUMS).nil? && !matrix[r+1][c-1].match(NUMS).nil?
         range = matrix[r+1][c-1..c]
-      elsif matrix[r+1][c-1].match(NUMS).nil?
-         range = matrix[r+1][c-1]
       end
       numbers <<  range.scan(NUMS).join.to_i
     end

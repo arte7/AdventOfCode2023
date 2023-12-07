@@ -24,15 +24,10 @@ len = data[0].size - 1
 
 for i in 0..len do
   time = data[0][i]
-
   distance = data[1][i]
   charge_time = 0
 
-  halftime = (time/2).floor
-  peek = (time - halftime) * halftime
-
   loop do
-    return "won't fix" if peek < distance
     seconds_to_fin = time - charge_time
     millimeters = (seconds_to_fin * charge_time)
     if millimeters > distance
@@ -47,6 +42,5 @@ for i in 0..len do
   end
 end
 p result.flatten.inject(:*)
-
 
 file.close

@@ -69,4 +69,4 @@ puts Benchmark.measure {
   p result.reduce(:lcm)
   file.close
 }
-# benchmark   0.007973   0.000410   0.008383 (  0.008705)
+# benchmark 0.039434   0.000702   0.040136 (  0.041579)
